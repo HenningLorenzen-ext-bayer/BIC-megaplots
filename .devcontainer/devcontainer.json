@@ -49,7 +49,30 @@
 				"bierner.markdown-preview-github-styles",
 				"ionutvmi.path-autocomplete",
 				"RDebugger.r-debugger"
-			]
+			],
+			"settings": {
+				"editor.rulers": [
+					80,
+					{
+						"column": 100,
+						"color": "#ddaa00"
+					},
+					{
+						"column": 120,
+						"color": "#ff0000"
+					}
+				],
+				"editor.renderWhitespace": "all",
+				"editor.fontFamily": "'Cascadia Code', Consolas, 'Courier New', monospace",
+				"editor.fontLigatures": true,
+				"files.trimFinalNewlines": true,
+				"files.trimTrailingWhitespace": true,
+				"r.bracketedPaste": true,
+				"r.plot.useHttpgd": true,
+				"git.verboseCommit": true,
+				"git.autofetch": true,
+				"git.inputValidation": true
+			}
 		}
 	}
 }
