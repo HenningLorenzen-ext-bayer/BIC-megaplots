@@ -37,5 +37,19 @@
 			"label": "RStudio IDE",
 			"onAutoForward": "openBrowser"
 		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"mhutchie.git-graph",
+				"donjayamanne.githistory",
+				"waderyan.gitblame",
+				"GitHub.vscode-pull-request-github",
+				"REditorSupport.r",
+				"bierner.markdown-preview-github-styles",
+				"ionutvmi.path-autocomplete",
+				"RDebugger.r-debugger"
+			]
+		}
 	}
 }
