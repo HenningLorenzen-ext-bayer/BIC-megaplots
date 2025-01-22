@@ -22,15 +22,20 @@
 		},
 		"ghcr.io/stuartleeks/dev-container-features/shell-history:0": {},
 		"ghcr.io/jpawlowski/devcontainer-features/cascadia-code:1": {},
-		"ghcr.io/devcontainers/features/github-cli:1": {}
-	}
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/rocker-org/devcontainer-features/rstudio-server:0": {}
+	},
 
+	"onCreateCommand": "cp .devcontainer/rstudio-prefs.json /home/vscode/.config/rstudio/",
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "uname -a",
-
-	// Configure tool-specific properties.
-	// "customizations": {},
+	"forwardPorts": [8787],
+	"postAttachCommand": {
+		"rstudio-start": "rserver"
+	},
+	"portsAttributes": {
+		"8787": {
+			"label": "RStudio IDE",
+			"onAutoForward": "openBrowser"
+		}
+	}
 }
