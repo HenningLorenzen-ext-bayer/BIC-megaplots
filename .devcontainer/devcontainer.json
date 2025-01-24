@@ -2,14 +2,6 @@
 	"name": "Ubuntu",
 	"image": "mcr.microsoft.com/devcontainers/base:jammy",
 	"features": {
-		"ghcr.io/rocker-org/devcontainer-features/r-dependent-packages:0": {
-			"when": "postCreate",
-			"pakVersion": "auto",
-			"manifestRoot": ".",
-			"additionalRepositories": "",
-			"dependencyTypes": "all,Config/Needs/website"
-		},
-		"ghcr.io/rocker-org/devcontainer-features/r-history:0": {},
 		"ghcr.io/rocker-org/devcontainer-features/r-rig:1": {
 			"installDevTools": true,
 			"installRMarkdown": true,
@@ -20,11 +12,24 @@
 			"vscodeRSupport": "full",
 			"pandocVersion": "auto"
 		},
+		"ghcr.io/rocker-org/devcontainer-features/r-dependent-packages:0": {
+			"when": "postCreate",
+			"pakVersion": "auto",
+			"manifestRoot": ".",
+			"additionalRepositories": "",
+			"dependencyTypes": "all,Config/Needs/website"
+		},
+		"ghcr.io/rocker-org/devcontainer-features/r-history:0": {},
 		"ghcr.io/stuartleeks/dev-container-features/shell-history:0": {},
 		"ghcr.io/jpawlowski/devcontainer-features/cascadia-code:1": {},
 		"ghcr.io/devcontainers/features/github-cli:1": {},
 		"ghcr.io/rocker-org/devcontainer-features/rstudio-server:0": {}
 	},
+	"overrideFeatureInstallOrder": [
+		"ghcr.io/rocker-org/devcontainer-features/r-rig",
+		"ghcr.io/rocker-org/devcontainer-features/r-dependent-packages",
+		"ghcr.io/rocker-org/devcontainer-features/rstudio-server"
+	],
 
 	"onCreateCommand": "cp .devcontainer/rstudio-prefs.json /home/vscode/.config/rstudio/",
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -67,6 +72,7 @@
 				"editor.fontLigatures": true,
 				"files.trimFinalNewlines": true,
 				"files.trimTrailingWhitespace": true,
+				"r.rterm.linux": "/usr/local/bin/radian",
 				"r.bracketedPaste": true,
 				"r.plot.useHttpgd": true,
 				"git.verboseCommit": true,
