@@ -3,14 +3,18 @@
 	"image": "mcr.microsoft.com/devcontainers/base:jammy",
 	"features": {
 		"ghcr.io/rocker-org/devcontainer-features/r-rig:1": {
-			"installDevTools": true,
-			"installRMarkdown": true,
+			"installDevTools": false,
+			"installRMarkdown": false,
 			"installRadian": true,
-			"installVscDebugger": true,
+			"installVscDebugger": false,
 			"version": "release",
 			"pakVersion": "auto",
-			"vscodeRSupport": "full",
+			"vscodeRSupport": "lsp",
 			"pandocVersion": "auto"
+		},
+		"ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+			"packages": "devtools, usethis, unigd, httpgd, github::ManuelHentschel/vscDebugger, rmarkdown, dplyr, DT, rlang",
+			"additionalRepositories": "cranhaven = 'https://cranhaven.r-universe.dev'"
 		},
 		"ghcr.io/rocker-org/devcontainer-features/r-dependent-packages:0": {
 			"when": "postCreate",
@@ -27,12 +31,13 @@
 	},
 	"overrideFeatureInstallOrder": [
 		"ghcr.io/rocker-org/devcontainer-features/r-rig",
+		"ghcr.io/rocker-org/devcontainer-features/r-packages",
 		"ghcr.io/rocker-org/devcontainer-features/r-dependent-packages",
 		"ghcr.io/rocker-org/devcontainer-features/rstudio-server"
 	],
 
 	"onCreateCommand": "cp .devcontainer/rstudio-prefs.json /home/vscode/.config/rstudio/",
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+
 	"forwardPorts": [8787],
 	"postAttachCommand": {
 		"rstudio-start": "rserver"
@@ -43,6 +48,7 @@
 			"onAutoForward": "openBrowser"
 		}
 	},
+
 	"customizations": {
 		"vscode": {
 			"extensions": [
